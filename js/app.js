@@ -16,15 +16,15 @@ let container = document.querySelector('#result')
 
 btn.addEventListener('click', function(e){
   e.preventDefault()
-  container.innerHTML = ''
   let inputValue = input.value
   let randomNumber = Math.floor(Math.random() * dummyText.length)
   if(isNaN(inputValue) || inputValue > 9 || inputValue < 0 || inputValue == ""){
     container.innerHTML = dummyText[randomNumber]
   }else {
     let updateArray = dummyText.slice(0, inputValue)
-    updateArray.map(item => {
-      container.innerHTML += '<p>' + item + '</p>'
-    })
+    let text = updateArray.map(item => {
+      return '<p>' + item + '</p>'
+    }).join('')
+    container.innerHTML = text
   }
 })
